@@ -35,8 +35,6 @@ podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jen
         stage('Hello World'){
             container('jnlp'){
                 echo "hello, world"
-                sh "ln -s $sharefile/kubectl  /usr/bin/kubectl"
-                sh "ln -s $sharefile/docker /usr/bin/docker"
 
             }
         }
@@ -48,7 +46,7 @@ podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jen
         stage('Mvn Package'){
             container('jnlp-maven'){
                 dir("$jenworkspace"){
-                    sh "mvn clean install -Dmaven.test.skip=true  -U  -s  $sharefile/settings.xml"
+                    sh "mvn clean install -Dmaven.test.skip=true"
                 }
             }
         }
