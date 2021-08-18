@@ -14,22 +14,19 @@ podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jen
     containers: [
         containerTemplate(
             name: 'jnlp',
-            image: 'registry-vpc.cn-hangzhou.aliyuncs.com/hiningmeng/jnlp:v1',
-            ttyEnabled: true,
-            alwaysPullImage: false),
+            image: 'registry.cn-beijing.aliyuncs.com/kubesphereio/jnlp-slave:3.27-1',
+            tty: true,
+            alwaysPullImage: true),
         containerTemplate(
             name: 'jnlp-maven',
-            image: 'jenkins/jnlp-agent-maven',
+            image: 'jenkins/jnlp-agent-maven:latest',
             //image:'ungerts/jnlp-agent-maven',
-            ttyEnabled: true,
-            alwaysPullImage: false,
+            tty: true,
+            alwaysPullImage: true,
             command: 'cat')
     ],
     volumes: [
-        hostPathVolume(hostPath: '/var/run/docker.sock', mountPath:'/var/run/docker.sock'),
-        persistentVolumeClaim(mountPath: "$mvnrepo", claimName: 'maven-repo-pvc', readOnly: false),
-        persistentVolumeClaim(mountPath: "$sharefile", claimName: 'sharefile-repo-pvc', readOnly: false),
-    ]
+        hostPathVolume(hostPath: '/var/run/docker.sock', mountPath:'/var/run/docker.sock')
 )
 {
 
