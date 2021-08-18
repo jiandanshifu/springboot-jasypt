@@ -1,15 +1,15 @@
-#定义参数label，K8S启动的pod名称通过这个来制定
+
 def label = "JenkinsPOD-${UUID.randomUUID().toString()}"
-#定义jenkins的工作目录
+
 def jenworkspace="/home/jenkins/workspace/${params.PROJECT}"
-#maven项目缓存，提供编译速度
+
 def mvnrepo="/tmp/repository"
-#kubectl和docker执行文件，这个可以打到镜像里面，这边直接共享的方式提供
+
 def sharefile="/tmp/sharefile"
-#deployment等K8S的yaml文件目录
+
 def k8srepo='/tmp/k8s_repos'
 
-#cloud为我们前面提供的云名称，nodeSelector是K8S运行pod的节点选择
+
 podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jenkins=jnlp',
     containers: [
         containerTemplate(
