@@ -27,6 +27,7 @@ podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jen
     ],
     volumes: [
         hostPathVolume(hostPath: '/var/run/docker.sock', mountPath:'/var/run/docker.sock')
+    ]
 )
 {
 
