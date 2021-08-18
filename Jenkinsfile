@@ -55,10 +55,8 @@ podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jen
             }
         }
         stage('Docker build'){
-            ...
         }
         stage('K8S Deploy'){
-            ...
         }
     }
 }
