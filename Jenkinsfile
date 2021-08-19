@@ -33,7 +33,7 @@ podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jen
 
     node (label) {
         stage('Hello World'){
-            container('jnlp'){
+            container('jnlp-maven'){
                 echo "hello, world"
 
             }
