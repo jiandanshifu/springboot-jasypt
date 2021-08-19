@@ -23,7 +23,7 @@ podTemplate(label: label, cloud: 'kubernetes',nodeSelector: 'devops.k8s.icjl/jen
             //image:'ungerts/jnlp-agent-maven',
             tty: true,
             alwaysPullImage: true,
-            command: 'cat')
+            command: '')
     ],
     volumes: [
         hostPathVolume(hostPath: '/var/run/docker.sock', mountPath:'/var/run/docker.sock')
